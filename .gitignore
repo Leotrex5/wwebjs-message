@@ -1,1 +1,4 @@
 /node_modules
+.wwebjs.auth
+.wwebjs_cache
+/chrome-headless-shell

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot mensageiro</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="w-3/5 m-auto p-6 bg-white rounded shadow-md">
+        <form action="" class="flex flex-col p-4 text-center gap-4" id="form">
+            <div class="flex flex-col">
+                <div>
+                    <span>Utilize o número completo e sem caracteres especiais</span>
+                    <span>Ex: (55)(21)(9)(12345678)</span>
+                </div>
+            <div>
+                <span>Separe os números utilizando virgula</span>
+                <span>Ex: 5521911111111,5521912345678</span>
+            </div>
+
+            </div>
+            <div>
+                <label for="number">Números: </label>
+                <input type="text" name="number" id="number" class="bg-slate-100 rounded">
+            </div>
+            <div class="justify-center text-center align-middle">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" class="bg-slate-100 rounded"></textarea>
+            </div>
+            <button type="submit" class="hover:opacity-60 transition">Enviar</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const form = document.getElementById('form')
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault()
+            sendForm()
+        })
+
+        function sendForm(){
+            axios.post('http://localhost:3000/send-message',{
+                to: document.getElementById('number').value,
+                message: document.getElementById('message').value
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        }
+    </script>
+</body>
+</html>

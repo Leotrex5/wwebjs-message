@@ -4,8 +4,12 @@
   "main": "index.js",
   "author": "leotrex5",
   "license": "MIT",
+  "scripts": {
+    "start": "yarn tsx watch ./src/index.ts"
+  },
   "dependencies": {
     "express": "^5.1.0",
+    "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.28.0"
   },
   "devDependencies": {
